@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import DrumPad from "./DrumPad";
+import DrumBox from "./DrumBox";
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App" id="drum-machine">
-        <DrumPad />
+        <DrumBox />
         <div id="display">display</div>
       </div>
     );
