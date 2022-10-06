@@ -11,7 +11,6 @@ class DrumPad extends React.Component {
         const sound = document.getElementById(this.props.keyTrigger);
         sound.currentTime = 0;
         sound.play();
-        setTimeout(() => this.activatePad(), 100);
     }
 
     render() {
