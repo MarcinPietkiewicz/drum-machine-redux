@@ -5,15 +5,17 @@ import DrumBox from "./DrumBox";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {display: 'starting...'};
+    this.state = { display: "starting..." };
   }
 
   render() {
     return (
-      <div className="App" id="drum-machine">
-        <div id="header">The Drum Machine</div>
-        <DrumBox />
-        <div id="display">{this.state.display}</div>
+      <div id="center-container">
+        <div className="App" id="drum-machine">
+          <div id="header">The Drum Machine</div>
+          <DrumBox />
+          <div id="display">{this.state.display}</div>
+        </div>
       </div>
     );
   }
