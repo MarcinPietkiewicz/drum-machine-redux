@@ -1,0 +1,21 @@
+.drum-pad{
+    width: 90%;
+    height:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight:900;
+
+}
+
+.inactive {
+    background-color:white;
+    box-shadow: 5px 6px 3px 0px rgba(66, 68, 90, 1);
+
+}
+
+.active {
+    background-color:red;
+    box-shadow:inherit;
+
+}
