@@ -29,7 +29,7 @@ class DrumPad extends React.Component {
 
   highlightButton() {
     this.setState({ padStyle: 'active'})
-    setTimeout(() => this.setState({padStyle: 'inactive'}), 100)
+    setTimeout(() => this.setState({padStyle: 'inactive'}), 150)
   }
 
   handleKeyPress(e) {

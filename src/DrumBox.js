@@ -3,10 +3,7 @@ import styles from "./DrumBox.css";
 import DrumPad from './DrumPad';
 
 class DrumBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+
 
   render() {
     return (
