@@ -16,7 +16,7 @@
 
 .inactive {
   background-color: lightcyan;
-  box-shadow: 5px 6px 3px 0px rgba(66, 68, 90, 1);
+  box-shadow: 4px 5px 2px 0px rgba(66, 68, 90, 1);
 }
 
 .active {

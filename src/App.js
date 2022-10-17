@@ -6,6 +6,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { display: "starting..." };
+    this.updateDisplay = this.updateDisplay.bind(this);
+  }
+
+  updateDisplay = (clipId) => {
+    this.setState({display: clipId})
+    console.log(clipId);
+    console.log('działa');
   }
 
   render() {
@@ -13,7 +20,7 @@ class App extends React.Component {
       <div id="center-container">
         <div className="App" id="drum-machine">
           <div id="header">The Drum Machine</div>
-          <DrumBox />
+          <DrumBox upDisplay={this.updateDisplay}/>
           <div id="display">{this.state.display}</div>
         </div>
       </div>

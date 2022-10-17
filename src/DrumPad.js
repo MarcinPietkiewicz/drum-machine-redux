@@ -5,11 +5,12 @@ class DrumPad extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        padStyle: 'inactive'
-    }
+      padStyle: "inactive",
+    };
     this.playSoundAndHighlight = this.playSoundAndHighlight.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.highlightButton = this.highlightButton.bind(this);
+    // this.changeNumber = this.changeNumber.bind(this);
   }
 
   componentDidMount() {
@@ -23,13 +24,18 @@ class DrumPad extends React.Component {
   playSoundAndHighlight() {
     const sound = document.getElementById(this.props.keyTrigger);
     this.highlightButton();
+    this.updateDisplay(this.props.clipId);
     sound.currentTime = 0;
     sound.play();
   }
 
+  updateDisplay = (soundName) => {
+    this.props.upDisplay(soundName);
+  };
+
   highlightButton() {
-    this.setState({ padStyle: 'active'})
-    setTimeout(() => this.setState({padStyle: 'inactive'}), 150)
+    this.setState({ padStyle: "active" });
+    setTimeout(() => this.setState({ padStyle: "inactive" }), 150);
   }
 
   handleKeyPress(e) {
