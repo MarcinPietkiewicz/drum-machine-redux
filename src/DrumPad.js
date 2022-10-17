@@ -7,7 +7,7 @@ class DrumPad extends React.Component {
     this.state = {
         padStyle: 'inactive'
     }
-    this.playSound = this.playSound.bind(this);
+    this.playSoundAndHighlight = this.playSoundAndHighlight.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.highlightButton = this.highlightButton.bind(this);
   }
@@ -20,11 +20,11 @@ class DrumPad extends React.Component {
     document.removeEventListener("keydown", this.handleKeyPress);
   }
 
-  playSound() {
+  playSoundAndHighlight() {
     const sound = document.getElementById(this.props.keyTrigger);
+    this.highlightButton();
     sound.currentTime = 0;
     sound.play();
-    this.highlightButton();
   }
 
   highlightButton() {
@@ -34,13 +34,13 @@ class DrumPad extends React.Component {
 
   handleKeyPress(e) {
     if (e.keyCode === this.props.keyCode) {
-      this.playSound();
+      this.playSoundAndHighlight();
     }
   }
 
   render() {
     return (
-      <div className={`drum-pad ${this.state.padStyle}`} id={this.props.clipId} onClick={this.playSound}>
+      <div className={`drum-pad ${this.state.padStyle}`} id={this.props.clipId} onClick={this.playSoundAndHighlight}>
         <audio className="clip" id={this.props.keyTrigger} src={this.props.clip} />
         {this.props.keyTrigger}
       </div>

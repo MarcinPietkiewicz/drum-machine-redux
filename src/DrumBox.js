@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./DrumBox.css";
 import DrumPad from './DrumPad';
 
 class DrumBox extends React.Component {
