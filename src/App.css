@@ -126,8 +126,9 @@ body {
   align-items: center;
 }
 #power-button {
+  margin:3px;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,4 +146,17 @@ body {
   background: darkorange;
   background: radial-gradient(circle, #ffcd82 0%, rgb(216, 137, 35) 100%);
   box-shadow: 2px 3px 1px 0px rgb(194, 159, 64);
+}
+
+#power-icon {
+  width:30px;
+}
+
+.power-icon-on {
+  filter: brightness(0) saturate(100%) invert(97%) sepia(3%) saturate(0%) hue-rotate(199deg) brightness(102%) contrast(104%);
+}
+
+.active-logo{
+  -webkit-text-fill-color:rgb(247, 199, 42);
+  text-shadow: 1px 1px 12px rgba(246,218,105,0.4);
 }
