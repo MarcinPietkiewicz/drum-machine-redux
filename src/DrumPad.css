@@ -15,11 +15,13 @@
 }
 
 .inactive {
-  background-color: lightcyan;
-  box-shadow: 4px 5px 2px 0px rgba(66, 68, 90, 1);
+  background: lightcyan;
+  background: radial-gradient(circle, #454545 0%, #333 100%);
+  box-shadow: 2px 3px 1px 0px rgba(66, 68, 90, 1);
 }
 
 .active {
-  background-color: darkorange;
-  box-shadow: inherit;
+  background: darkorange;
+  background: radial-gradient(circle, #ffcd82 0%, rgb(216, 137, 35) 100%);
+  box-shadow: 2px 3px 1px 0px rgb(194, 159, 64);
 }
