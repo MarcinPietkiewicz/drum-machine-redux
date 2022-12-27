@@ -18,7 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="center-container">
-        <div className="App" id="drum-machine">
+        <div className="glow" id="drum-machine">
           <div id="header">Drum Machine Redux</div>
           <DrumBox upDisplay={this.updateDisplay} />
           <DisplayInstrument display={this.state.display}/>

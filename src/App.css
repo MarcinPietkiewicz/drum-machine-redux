@@ -1,9 +1,5 @@
 body {
-  background-color:darkslategray;
-}
-
-.App {
-  text-align: center;
+  background-color: black;
 }
 
 #center-container {
@@ -14,19 +10,10 @@ body {
   min-height: 100vh;
 }
 
-#header {
-  grid-column: 1/4;
-  background-color: rgb(18, 37, 37);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  color: white;
-  font-style: italic;
-}
-
 #drum-machine {
-  background-color: lightblue;
+  position: relative;
+  background: linear-gradient(0deg, rgb(44, 44, 44), rgb(22, 22, 22));
+  border-radius: 15px;
   width: 270px;
   height: 500px;
   display: grid;
@@ -36,8 +23,54 @@ body {
   gap: 15px;
 }
 
+.glow::before,
+.glow::after {
+  border-radius:17px;
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(45deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff, #e6fb04);
+  background-size: 400%;
+  width: calc(100% + 5px);
+  height: calc(100% + 5px);
+  z-index: -1;
+  animation: animate 20s linear infinite;
+}
+
+@keyframes animate{
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.glow::after{
+  filter: blur(30px);
+  opacity: 0.7;
+}
+
+#header {
+  grid-column: 1/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: transparent;
+  background: #666666;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  font-style: italic;
+}
+
 #display-instrument {
-  border-radius:5px;
+  border-radius: 5px;
   background-color: white;
   grid-column: 1 / 4;
   display: flex;
@@ -51,20 +84,19 @@ body {
   -ms-user-select: none;
 }
 #display-power {
-  border-radius:5px;
-  background-color:black;
+  border-radius: 5px;
+  background-color: black;
   grid-column: 1 / 3;
-  color:white;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-#power-button {
-  border-radius:10px;
-  background-color: red;
-  color:white;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+#power-button {
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
