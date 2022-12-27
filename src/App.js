@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
 import DrumBox from "./DrumBox";
-import Display from "./Display";
+import DisplayInstrument from "./DisplayInstrument";
+import DisplayPower from './DisplayPower';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class App extends React.Component {
         <div className="App" id="drum-machine">
           <div id="header">Drum Machine Redux</div>
           <DrumBox upDisplay={this.updateDisplay} />
-          <Display display={this.state.display}/>
+          <DisplayInstrument display={this.state.display}/>
+          <DisplayPower />
         </div>
       </div>
     );
