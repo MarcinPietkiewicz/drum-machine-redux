@@ -11,15 +11,13 @@ class DisplayPower extends React.Component {
     let lights = document.getElementById("drum-machine");
     let button = document.getElementById("power-button");
     if (button.classList.contains("power-on")) {
-        console.log('containes power-on')
       lights.className = "glow";
       button.className = "power-off";
-      button.innerHTML = "PWR<br>OFF";
+      button.innerHTML = "PWR<br />OFF";
     } else {
-        console.log('else');
       lights.className = "glow anim-start";
       button.className = "power-on";
-      button.innerHTML = "PWR<br>ON";
+      button.innerHTML = "PWR<br />ON";
     }
   }
 
@@ -28,7 +26,7 @@ class DisplayPower extends React.Component {
       <React.Fragment>
         <div id="display-power"></div>
         <button id="power-button" className="power-off" onClick={this.animateLights}>
-          PWR<br></br>OFF
+          PWR<br />OFF
         </button>
       </React.Fragment>
     );
