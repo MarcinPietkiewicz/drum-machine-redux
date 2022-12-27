@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
 import DrumBox from "./DrumBox";
+import Display from "./Display";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { display: "click any button..." };
+    this.state = { display: "" };
     this.updateDisplay = this.updateDisplay.bind(this);
   }
 
@@ -17,9 +18,9 @@ class App extends React.Component {
     return (
       <div id="center-container">
         <div className="App" id="drum-machine">
-          <div id="header">The Drum Machine</div>
+          <div id="header">Drum Machine Redux</div>
           <DrumBox upDisplay={this.updateDisplay} />
-          <div id="display">{this.state.display}</div>
+          <Display display={this.state.display}/>
         </div>
       </div>
     );

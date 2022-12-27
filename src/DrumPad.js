@@ -10,7 +10,6 @@ class DrumPad extends React.Component {
     this.playSoundAndHighlight = this.playSoundAndHighlight.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.highlightButton = this.highlightButton.bind(this);
-    // this.changeNumber = this.changeNumber.bind(this);
   }
 
   componentDidMount() {

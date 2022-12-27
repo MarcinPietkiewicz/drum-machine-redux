@@ -1,4 +1,4 @@
 # Drum Machine Redux    
 
-Built with React with Redux
+Built with React and Redux
 
