@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./DrumPad.css";
+import "./DrumPad.css";
 
 class DrumPad extends React.Component {
   constructor(props) {
