@@ -10,7 +10,6 @@ class App extends React.Component {
     this.state = { display: "", power: false };
     this.timerRef = React.createRef();
     this.updateDisplay = this.updateDisplay.bind(this);
-    console.log(this.timerRef.current);
   }
 
   updateDisplay = (text, powerClick = false) => {

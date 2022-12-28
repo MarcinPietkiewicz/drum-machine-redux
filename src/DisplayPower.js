@@ -1,9 +1,12 @@
 import React from "react";
+import pwrSound from './assets/button.mp3';
+import pwrIcon from './assets/pwr.svg';
 
 class DisplayPower extends React.Component {
   constructor(props) {
     super(props);
     this.powerUpDrumBox = this.powerUpDrumBox.bind(this);
+    this.audio = new Audio(pwrSound);
   }
 
   powerUpDrumBox() {
@@ -11,6 +14,7 @@ class DisplayPower extends React.Component {
     let button = document.getElementById("power-button");
     let buttonIcon = document.getElementById("power-icon");
     let title = document.getElementById("header");
+    this.audio.play();
     if (button.classList.contains("power-on")) {
       lights.className = "glow";
       button.className = "power-off";
@@ -32,7 +36,7 @@ class DisplayPower extends React.Component {
       <React.Fragment>
         <div id="display-power"></div>
         <button id="power-button" className="power-off" onClick={this.powerUpDrumBox}>
-          <img id="power-icon" src="assets/pwr.svg" alt="power button" />
+          <img id="power-icon" src={pwrIcon} alt="power button" />
         </button>
       </React.Fragment>
     );
