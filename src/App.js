@@ -7,18 +7,24 @@ import DisplayPower from "./DisplayPower";
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { display: "" };
+    this.state = { display: "", power: false };
     this.timerRef = React.createRef();
     this.updateDisplay = this.updateDisplay.bind(this);
     console.log(this.timerRef.current);
   }
 
-  updateDisplay = (text) => {
+  updateDisplay = (text, powerClick = false) => {
     if (this.timerRef.current == null) {
       this.setDisplayTimer(text);
+      if (powerClick === true) {
+        this.setState({power: !this.state.power})
+      }
     } else {
       clearTimeout(this.timerRef.current);
       this.setDisplayTimer(text);
+      if (powerClick === true) {
+        this.setState({power: !this.state.power})
+      }
     }
   };
 
@@ -34,7 +40,7 @@ class App extends React.Component {
       <div id="center-container">
         <div className="glow" id="drum-machine">
           <div id="header">Drum Machine Redux</div>
-          <DrumBox upDisplay={this.updateDisplay} />
+          <DrumBox upDisplay={this.updateDisplay} power={this.state.power}/>
           <DisplayInstrument display={this.state.display} />
           <DisplayPower powerSwitch={this.updateDisplay}/>
         </div>
