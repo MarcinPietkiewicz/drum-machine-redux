@@ -36,7 +36,7 @@ class App extends React.Component {
           <div id="header">Drum Machine Redux</div>
           <DrumBox upDisplay={this.updateDisplay} />
           <DisplayInstrument display={this.state.display} />
-          <DisplayPower />
+          <DisplayPower powerSwitch={this.updateDisplay}/>
         </div>
       </div>
     );

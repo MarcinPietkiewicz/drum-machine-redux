@@ -3,7 +3,6 @@ import React from "react";
 class DisplayPower extends React.Component {
   constructor(props) {
     super(props);
-
     this.animateLights = this.animateLights.bind(this);
   }
 
@@ -15,13 +14,16 @@ class DisplayPower extends React.Component {
     if (button.classList.contains("power-on")) {
       lights.className = "glow";
       button.className = "power-off";
-      buttonIcon.className = '';
-      title.className='';
+      buttonIcon.className = "";
+      title.className = "";
+      this.props.powerSwitch('Goodbye');
+
     } else {
       lights.className = "glow anim-start";
       button.className = "power-on";
-      buttonIcon.className = 'power-icon-on';
-      title.className = 'active-logo';
+      buttonIcon.className = "power-icon-on";
+      title.className = "active-logo";
+      this.props.powerSwitch('Hello');
     }
   }
 
@@ -30,7 +32,7 @@ class DisplayPower extends React.Component {
       <React.Fragment>
         <div id="display-power"></div>
         <button id="power-button" className="power-off" onClick={this.animateLights}>
-          <img id="power-icon" src="assets/pwr.svg" alt="power button"/>
+          <img id="power-icon" src="assets/pwr.svg" alt="power button" />
         </button>
       </React.Fragment>
     );
