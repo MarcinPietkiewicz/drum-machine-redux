@@ -20,13 +20,13 @@ class PowerButton extends React.Component {
       button.className = "power-off";
       buttonIcon.className = "";
       title.className = "";
-      this.props.powerSwitch("Goodbye", true);
+      this.props.powerSwitch();
     } else {
       lights.className = "glow anim-start";
       button.className = "power-on";
       buttonIcon.className = "power-icon-on";
       title.className = "active-logo";
-      this.props.powerSwitch("Hello", true);
+      this.props.powerSwitch();
     }
   }
 

@@ -11,24 +11,30 @@ class App extends React.Component {
     this.state = { display: "", power: false, volume: 1 };
     this.timerRef = React.createRef();
     this.updateDisplay = this.updateDisplay.bind(this);
+    this.togglePower = this.togglePower.bind(this);
   }
 
   componentDidMount() {
-    this.updateDisplay("Click power button to start", false, 4000);
+    this.updateDisplay("Click power button to start", 4000);
   }
 
-  updateDisplay = (text, powerClick = false, time = 1000) => {
+  togglePower(){
+    let text = '';
+    if (this.state.power === false) {
+      text = 'Hello'
+    } else (
+      text = 'Goodbye'
+    )
+    this.setState({power: !this.state.power })
+    this.updateDisplay(text);
+  }
+
+  updateDisplay = (text, time = 1000) => {
     if (this.timerRef.current == null) {
       this.setDisplayTimer(text, time);
-      if (powerClick === true) {
-        this.setState({ power: !this.state.power });
-      }
     } else {
       clearTimeout(this.timerRef.current);
       this.setDisplayTimer(text, time);
-      if (powerClick === true) {
-        this.setState({ power: !this.state.power });
-      }
     }
   };
 
@@ -54,7 +60,7 @@ class App extends React.Component {
           <DrumBox upDisplay={this.updateDisplay} power={this.state.power} volume={this.state.volume} />
           <Display display={this.state.display} />
           <VolumeControl volume={this.state.volume} updateVolume={this.updateVolume} />
-          <PowerButton powerSwitch={this.updateDisplay} />
+          <PowerButton powerSwitch={this.togglePower} />
         </div>
       </div>
     );
