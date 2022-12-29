@@ -22,12 +22,12 @@ class DrumPad extends React.Component {
 
   playSoundAndHighlight() {
     if (this.props.power === true) {
-    const sound = document.getElementById(this.props.keyTrigger);
-    this.highlightButton();
-    this.updateDisplay(this.props.clipId);
-    sound.currentTime = 0;
-    sound.volume = this.props.volume;
-    sound.play();
+      const sound = document.getElementById(this.props.keyTrigger);
+      this.highlightButton();
+      this.updateDisplay(this.props.clipId);
+      sound.currentTime = 0;
+      sound.volume = this.props.volume;
+      sound.play();
     }
   }
 
