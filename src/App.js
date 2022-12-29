@@ -12,26 +12,30 @@ class App extends React.Component {
     this.updateDisplay = this.updateDisplay.bind(this);
   }
 
-  updateDisplay = (text, powerClick = false) => {
+  componentDidMount() {
+    this.updateDisplay("Click power button to start", false, 4000);
+  }
+
+  updateDisplay = (text, powerClick = false, time = 1000) => {
     if (this.timerRef.current == null) {
-      this.setDisplayTimer(text);
+      this.setDisplayTimer(text, time);
       if (powerClick === true) {
         this.setState({power: !this.state.power})
       }
     } else {
       clearTimeout(this.timerRef.current);
-      this.setDisplayTimer(text);
+      this.setDisplayTimer(text, time);
       if (powerClick === true) {
         this.setState({power: !this.state.power})
       }
     }
   };
 
-  setDisplayTimer(text) {
+  setDisplayTimer(text, time = 1000) {
     this.setState({ display: text });
     this.timerRef.current = setTimeout(() => {
       this.setState({ display: "" });
-    }, 1000);
+    }, time);
   }
 
   render() {
