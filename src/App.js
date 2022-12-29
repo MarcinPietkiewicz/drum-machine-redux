@@ -21,22 +21,23 @@ class App extends React.Component {
     if (this.timerRef.current == null) {
       this.setDisplayTimer(text, time);
       if (powerClick === true) {
-        this.setState({power: !this.state.power})
+        this.setState({ power: !this.state.power });
       }
     } else {
       clearTimeout(this.timerRef.current);
       this.setDisplayTimer(text, time);
       if (powerClick === true) {
-        this.setState({power: !this.state.power})
+        this.setState({ power: !this.state.power });
       }
     }
   };
 
   updateVolume = (volume, volumeText) => {
-    this.updateDisplay(volumeText);
-    this.setState({volume: volume})
-
-  }
+    this.setState({ volume: volume });
+    if (this.state.power === true) {
+      this.updateDisplay(volumeText);
+    }
+  };
 
   setDisplayTimer(text, time = 1000) {
     this.setState({ display: text });
@@ -50,10 +51,10 @@ class App extends React.Component {
       <div id="center-container">
         <div className="glow" id="drum-machine">
           <div id="header">Drum Machine Redux</div>
-          <DrumBox upDisplay={this.updateDisplay} power={this.state.power} volume={this.state.volume}/>
+          <DrumBox upDisplay={this.updateDisplay} power={this.state.power} volume={this.state.volume} />
           <Display display={this.state.display} />
           <VolumeControl volume={this.state.volume} updateVolume={this.updateVolume} />
-          <PowerButton powerSwitch={this.updateDisplay}/>
+          <PowerButton powerSwitch={this.updateDisplay} />
         </div>
       </div>
     );

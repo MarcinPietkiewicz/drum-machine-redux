@@ -1,28 +1,26 @@
 import React from "react";
+import "./VolumeControl.css";
+
 
 class VolumeControl extends React.Component {
-constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.changeVolume = this.changeVolume.bind(this);
-}
+  }
 
-changeVolume(){
-    const volume = 0.5;
-    const volumeText = 'Volume: '+volume*100;
-    this.props.updateVolume(volume, volumeText);
-}
+  changeVolume(event) {
+    const volume = event.target.value;
+    const volumeText = "Volume: " + volume;
+    this.props.updateVolume(volume/100, volumeText);
+  }
 
-render(){
+  render() {
     return (
-        <div className="volume-control">
-            {this.props.volume*100}
-            <button onClick={this.changeVolume}>Vol</button>
-        </div>
-    )
+      <div className="volume-control">
+        <input type="range" min="0" max="100" defaultValue="100" className="volumeSlider" onChange={this.changeVolume}/>
+      </div>
+    );
+  }
 }
-
-}
-
-
 
 export default VolumeControl;
