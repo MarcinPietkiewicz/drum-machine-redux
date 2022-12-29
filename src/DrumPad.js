@@ -26,6 +26,7 @@ class DrumPad extends React.Component {
     this.highlightButton();
     this.updateDisplay(this.props.clipId);
     sound.currentTime = 0;
+    sound.volume = this.props.volume;
     sound.play();
     }
   }

@@ -1,13 +1,14 @@
 import React from "react";
 import "./App.css";
 import DrumBox from "./DrumBox";
-import DisplayInstrument from "./DisplayInstrument";
-import DisplayPower from "./DisplayPower";
+import Display from "./Display";
+import PowerButton from "./PowerButton";
+import VolumeControl from "./VolumeControl";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { display: "", power: false };
+    this.state = { display: "", power: false, volume: 1 };
     this.timerRef = React.createRef();
     this.updateDisplay = this.updateDisplay.bind(this);
   }
@@ -31,6 +32,12 @@ class App extends React.Component {
     }
   };
 
+  updateVolume = (volume, volumeText) => {
+    this.updateDisplay(volumeText);
+    this.setState({volume: volume})
+
+  }
+
   setDisplayTimer(text, time = 1000) {
     this.setState({ display: text });
     this.timerRef.current = setTimeout(() => {
@@ -43,9 +50,10 @@ class App extends React.Component {
       <div id="center-container">
         <div className="glow" id="drum-machine">
           <div id="header">Drum Machine Redux</div>
-          <DrumBox upDisplay={this.updateDisplay} power={this.state.power}/>
-          <DisplayInstrument display={this.state.display} />
-          <DisplayPower powerSwitch={this.updateDisplay}/>
+          <DrumBox upDisplay={this.updateDisplay} power={this.state.power} volume={this.state.volume}/>
+          <Display display={this.state.display} />
+          <VolumeControl volume={this.state.volume} updateVolume={this.updateVolume} />
+          <PowerButton powerSwitch={this.updateDisplay}/>
         </div>
       </div>
     );

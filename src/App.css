@@ -100,7 +100,7 @@ body {
   font-style: italic;
 }
 
-#display-instrument {
+#display {
   border-radius: 5px;
   background-color: black;
   color: rgb(10, 236, 10);
@@ -116,7 +116,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
 }
-#display-power {
+.volume-control {
   border-radius: 5px;
   background-color: black;
   grid-column: 1 / 3;
