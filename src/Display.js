@@ -1,9 +1,7 @@
 import React from "react";
 
-class Display extends React.Component {
-  render() {
-    return <div id="display">{this.props.display}</div>;
-  }
+function Display(props) {
+  return <div id="display">{props.display}</div>;
 }
 
 export default Display;
