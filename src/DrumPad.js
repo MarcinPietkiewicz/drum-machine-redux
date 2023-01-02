@@ -1,16 +1,8 @@
 import "./DrumPad.css";
-import React, { useState } from "react";
+import { useState } from "react";
 
 function DrumPad(props) {
   const [state, setState] = useState("inactive");
-
-  function componentDidMount() {
-    document.addEventListener("keydown", handleKeyPress);
-  }
-
-  function componentWillUnmount() {
-    document.removeEventListener("keydown", handleKeyPress);
-  }
 
   function playSoundAndHighlight() {
     if (props.power === true) {
@@ -28,18 +20,12 @@ function DrumPad(props) {
   }
 
   function highlightButton() {
-    console.log('highlighting button');
+    console.log("highlighting button");
     setState("active");
     setTimeout(() => {
-      console.log('setting inactive');
-      setState("inactive")}, 150);
-  }
-
-  function handleKeyPress(e) {
-    if (e.keyCode === props.keyCode) {
-      console.log('key code is right');
-      this.playSoundAndHighlight();
-    }
+      console.log("setting inactive");
+      setState("inactive");
+    }, 150);
   }
 
   return (
