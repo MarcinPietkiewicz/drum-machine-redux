@@ -1,70 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import DrumBox from "./DrumBox";
 import Display from "./Display";
 import PowerButton from "./PowerButton";
 import VolumeControl from "./VolumeControl";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { display: "", power: false, volume: 1 };
-    this.timerRef = React.createRef();
-    this.updateDisplay = this.updateDisplay.bind(this);
-    this.togglePower = this.togglePower.bind(this);
+function App() {
+  const [display, setDisplay] = useState("");
+  const [power, setPower] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const timerRef = React.createRef();
+  useEffect(() => {
+    updateDisplay("Click power button to start", 4000);
+  }, []);
+
+  function togglePower() {
+    let text = "";
+    if (power === false) {
+      text = "Hello";
+    } else text = "Goodbye";
+    setPower(!power);
+    updateDisplay(text);
   }
 
-  componentDidMount() {
-    this.updateDisplay("Click power button to start", 4000);
-  }
-
-  togglePower(){
-    let text = '';
-    if (this.state.power === false) {
-      text = 'Hello'
-    } else (
-      text = 'Goodbye'
-    )
-    this.setState({power: !this.state.power })
-    this.updateDisplay(text);
-  }
-
-  updateDisplay = (text, time = 1000) => {
-    if (this.timerRef.current == null) {
-      this.setDisplayTimer(text, time);
+  const updateDisplay = (text, time = 1000) => {
+    if (timerRef.current == null) {
+      setDisplayTimer(text, time);
     } else {
-      clearTimeout(this.timerRef.current);
-      this.setDisplayTimer(text, time);
+      clearTimeout(timerRef.current);
+      setDisplayTimer(text, time);
     }
   };
 
-  updateVolume = (volume, volumeText) => {
-    this.setState({ volume: volume });
-    if (this.state.power === true) {
-      this.updateDisplay(volumeText);
+  const updateVolume = (volume, volumeText) => {
+    setVolume(volume);
+    if (power === true) {
+      updateDisplay(volumeText);
     }
   };
 
-  setDisplayTimer(text, time = 1000) {
-    this.setState({ display: text });
-    this.timerRef.current = setTimeout(() => {
-      this.setState({ display: "" });
+  function setDisplayTimer(text, time = 1000) {
+    setDisplay(text);
+    timerRef.current = setTimeout(() => {
+      setDisplay("");
     }, time);
   }
 
-  render() {
-    return (
-      <div id="center-container">
-        <div className="glow" id="drum-machine">
-          <div id="header">Drum Machine Redux</div>
-          <DrumBox upDisplay={this.updateDisplay} power={this.state.power} volume={this.state.volume} />
-          <Display display={this.state.display} />
-          <VolumeControl volume={this.state.volume} updateVolume={this.updateVolume} />
-          <PowerButton powerSwitch={this.togglePower} />
-        </div>
+  return (
+    <div id="center-container">
+      <div className="glow" id="drum-machine">
+        <div id="header">Drum Machine Redux</div>
+        <DrumBox upDisplay={updateDisplay} power={power} volume={volume} />
+        <Display display={display} />
+        <VolumeControl volume={volume} updateVolume={updateVolume} />
+        <PowerButton powerSwitch={togglePower} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
