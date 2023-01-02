@@ -20,10 +20,8 @@ function DrumPad(props) {
   }
 
   function highlightButton() {
-    console.log("highlighting button");
     setState("active");
     setTimeout(() => {
-      console.log("setting inactive");
       setState("inactive");
     }, 150);
   }
