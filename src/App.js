@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import DrumBox from "./DrumBox";
 import Display from "./Display";
@@ -9,7 +9,7 @@ function App() {
   const [display, setDisplay] = useState("");
   const [power, setPower] = useState(false);
   const [volume, setVolume] = useState(1);
-  const timerRef = React.createRef();
+  const timerRef = useRef(null);
   useEffect(() => {
     updateDisplay("Click power button to start", 4000);
   }, []);
