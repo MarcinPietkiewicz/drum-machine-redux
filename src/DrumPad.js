@@ -1,59 +1,53 @@
-import React from "react";
 import "./DrumPad.css";
+import React, { useState } from "react";
 
-class DrumPad extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      padStyle: "inactive",
-    };
-    this.playSoundAndHighlight = this.playSoundAndHighlight.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.highlightButton = this.highlightButton.bind(this);
+function DrumPad(props) {
+  const [state, setState] = useState("inactive");
+
+  function componentDidMount() {
+    document.addEventListener("keydown", handleKeyPress);
   }
 
-  componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress);
+  function componentWillUnmount() {
+    document.removeEventListener("keydown", handleKeyPress);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress);
-  }
-
-  playSoundAndHighlight() {
-    if (this.props.power === true) {
-      const sound = document.getElementById(this.props.keyTrigger);
-      this.highlightButton();
-      this.updateDisplay(this.props.clipId);
+  function playSoundAndHighlight() {
+    if (props.power === true) {
+      const sound = document.getElementById(props.keyTrigger);
+      highlightButton();
+      updateDisplay(props.clipId);
       sound.currentTime = 0;
-      sound.volume = this.props.volume;
+      sound.volume = props.volume;
       sound.play();
     }
   }
 
-  updateDisplay = (soundName) => {
-    this.props.upDisplay(soundName);
-  };
-
-  highlightButton() {
-    this.setState({ padStyle: "active" });
-    setTimeout(() => this.setState({ padStyle: "inactive" }), 150);
+  function updateDisplay(soundName) {
+    props.upDisplay(soundName);
   }
 
-  handleKeyPress(e) {
-    if (e.keyCode === this.props.keyCode) {
+  function highlightButton() {
+    console.log('highlighting button');
+    setState("active");
+    setTimeout(() => {
+      console.log('setting inactive');
+      setState("inactive")}, 150);
+  }
+
+  function handleKeyPress(e) {
+    if (e.keyCode === props.keyCode) {
+      console.log('key code is right');
       this.playSoundAndHighlight();
     }
   }
 
-  render() {
-    return (
-      <div className={`drum-pad ${this.state.padStyle}`} id={this.props.clipId} onClick={this.playSoundAndHighlight}>
-        <audio className="clip" id={this.props.keyTrigger} src={this.props.clip} />
-        {this.props.keyTrigger}
-      </div>
-    );
-  }
+  return (
+    <div className={`drum-pad ${state}`} id={props.clipId} onClick={playSoundAndHighlight}>
+      <audio className="clip" id={props.keyTrigger} src={props.clip} />
+      {props.keyTrigger}
+    </div>
+  );
 }
 
 export default DrumPad;
