@@ -1,5 +1,5 @@
-import pwrSound from "./assets/button.mp3";
-import pwrIcon from "./assets/pwr.svg";
+import pwrSound from "../assets/button.mp3";
+import pwrIcon from "../assets/pwr.svg";
 
 function PowerButton(props) {
   const audio = new Audio(pwrSound);

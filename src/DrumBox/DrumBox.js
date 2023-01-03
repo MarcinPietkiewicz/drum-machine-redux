@@ -1,5 +1,5 @@
 import React from "react";
-import DrumPad from './DrumPad';
+import DrumPad from '../DrumPad/DrumPad';
 
 function DrumBox(props) {
     return (

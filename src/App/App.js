@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
-import DrumBox from "./DrumBox";
-import Display from "./Display";
-import PowerButton from "./PowerButton";
-import VolumeControl from "./VolumeControl";
+import DrumBox from "../DrumBox/DrumBox";
+import Display from "../Display/Display";
+import PowerButton from "../PowerButton/PowerButton";
+import VolumeControl from "../VolumeControl/VolumeControl";
+
 
 function App() {
   const [display, setDisplay] = useState("");
