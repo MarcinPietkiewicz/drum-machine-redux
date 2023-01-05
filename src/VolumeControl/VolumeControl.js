@@ -1,6 +1,14 @@
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { updateVolume } from './volumeSlice'
 import "./VolumeControl.css";
 
+
+
 function VolumeControl(props) {
+  const volume = useSelector((state) => state.volume.value)
+  const dispatch = useDispatch();
+
   function changeVolume(event) {
     const volume = event.target.value;
     const volumeText = "Volume: " + volume;

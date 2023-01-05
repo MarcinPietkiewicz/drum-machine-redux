@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import volumeReducer from '../features/volume/volumeSlice'
+import volumeReducer from '../VolumeControl/volumeSlice'
 
 
 export default configureStore({
